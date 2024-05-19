@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Resultado</title>
+    <meta charset="UTF-8">
+    <title>Result</title>
 </head>
 <body>
-    <h1>Resultado de la criptografía visual</h1>
-    <h2>Imágenes generadas:</h2>
-    <p>Imagen original:</p>
+    <h1>Result</h1>
+    <p>Original Image:</p>
     <img src="{{ original_image_path }}" alt="Original Image">
-    <p>Share 1:</p>
-    <img src="{{ share1_path }}" alt="Share 1">
-    <p>Share 2:</p>
-    <img src="{{ share2_path }}" alt="Share 2">
+    {% for share_path in share_paths %}
+        <p>Share {{ forloop.counter }}:</p>
+        <img src="{{ share_path }}" alt="Share {{ forloop.counter }}">
+    {% endfor %}
     <p>Overlay:</p>
     <img src="{{ overlay_path }}" alt="Overlay">
     <br>
