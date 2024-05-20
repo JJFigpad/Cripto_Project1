@@ -95,7 +95,7 @@ def main(image_path, num):
     output_dir = os.path.join(settings.MEDIA_ROOT, 'output')
     os.makedirs(output_dir, exist_ok=True)
 
-    for i in range(2 ** num):
+    for i in range(2**num):
         sharesPath.append(os.path.join(output_dir, f'share{i + 1}.png'))
     overlay_path = os.path.join(output_dir, 'overlay.png')
 
@@ -107,8 +107,8 @@ def main(image_path, num):
     shares = [share1, share2]
     if num > 1:
         c = 1
-        sharest = shares.copy()
         while c < num:
+            sharest = shares.copy()
             for sh in sharest:
                 temp = create_shares(sh)
                 shares.append(temp[0])
