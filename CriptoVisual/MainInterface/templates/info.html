@@ -26,10 +26,11 @@
     <h1>Descripción de la Aplicación</h1>
     <div class="container">
         <p>
-            Este código presenta una implementación de criptografía visual, una técnica que se aparta de los métodos convencionales de encriptación basados en algoritmos matemáticos, en su lugar utiliza imágenes para proteger la información. Comienza convirtiendo una imagen dada en una representación binaria, donde los píxeles se clasifican como blancos o negros según un umbral predefinido. Esta etapa de binarización simplifica el procesamiento de la imagen y sirve como punto de partida para el proceso de encriptación.
+            En CriptoVisual presentamos una aplicación didáctica que combina técnicas de criptografía visual y marcas de agua para la protección de imágenes digitales en escala de grises. La aplicación proporcionará a los usuarios una plataforma intuitiva para cifrar sus imágenes, lo que garantizará la confidencialidad de los datos visuales sensibles. Además, la integración de marcas de agua permitirá la autenticación y trazabilidad de las imágenes, lo que facilitará la detección de cualquier intento de manipulación o uso no autorizado. El desarrollo de esta aplicación se basará en algoritmos de criptografía y técnicas de procesamiento de imágenes vistas en la clase de <em>Criptografía</em> impartida por el docente Agustín Moreno.
         </p>
+        <h2>¿Cómo encriptamos imágenes?</h2>
         <p>
-            Una vez que se ha obtenido la imagen binaria, se procede a generar las imágenes compartidas. Estas imágenes, también conocidas como "sombras" o "shares", son esenciales para la recuperación de la imagen original. El proceso de generación de las imágenes compartidas implica una serie de transformaciones en los píxeles de la imagen binaria, utilizando un enfoque basado en la aleatoriedad. Esto asegura que cada imagen compartida contenga información única que, cuando se combina con otras, permita la reconstrucción de la imagen original.
+            La sección de criptografía visual opera transformando una imagen seleccionada por el usuario en una versión binaria y generando múltiples imágenes compartidas, también conocidas como "sombras" o "transparencias". Estas imágenes son fundamentales para la recuperación de la imagen original. El proceso de generación de estas imágenes implica una serie de transformaciones en los píxeles de la imagen binaria, empleando un enfoque que se basa en la aleatoriedad. Este método asegura que cada imagen compartida contenga información única, lo que, al combinarse con otras, permite la reconstrucción de una versión con distorsiones de la imagen original.
         </p>
         <p>
             El siguiente paso es guardar estas imágenes compartidas en el sistema de archivos, asegurando su persistencia para su posterior recuperación. Una vez que las imágenes compartidas están almacenadas, se realiza una operación de superposición. Esta operación combina las imágenes compartidas para recuperar la imagen original. Para lograr esto, se utiliza una técnica de "AND" a nivel de bits, que preserva los píxeles comunes entre las imágenes compartidas, descartando aquellos que no se repiten.
@@ -37,5 +38,10 @@
         <p>
             Finalmente, el sistema devuelve las imágenes compartidas resultantes, así como la imagen original recuperada. Esto proporciona una capa adicional de seguridad, ya que la información original se protege detrás de las imágenes compartidas generadas durante el proceso de encriptación. Este enfoque ofrece una alternativa interesante a los métodos convencionales de encriptación, ya que aprovecha la naturaleza visual de las imágenes para salvaguardar la información sensible.
         </p>
+        <h2>Marcas de agua</h2>
+        <p>
+            En la parte de marcas de agua....
+        </p>
     </div>
 {% endblock %}
+
