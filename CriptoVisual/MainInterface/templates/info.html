@@ -30,17 +30,21 @@
         </p>
         <h2>¿Cómo encriptamos imágenes?</h2>
         <p>
-            La sección de criptografía visual opera transformando una imagen seleccionada por el usuario en una versión binaria y generando múltiples imágenes compartidas, también conocidas como "sombras" o "transparencias". Estas imágenes son fundamentales para la recuperación de la imagen original. El proceso de generación de estas imágenes implica una serie de transformaciones en los píxeles de la imagen binaria, empleando un enfoque que se basa en la aleatoriedad. Este método asegura que cada imagen compartida contenga información única, lo que, al combinarse con otras, permite la reconstrucción de una versión con distorsiones de la imagen original.
+            La sección de criptografía visual opera transformando una imagen seleccionada por el usuario en una versión binaria y generando múltiples imágenes compartidas, también conocidas como "sombras" o "transparencias". Estas imágenes son fundamentales para la recuperación de la imagen original. El proceso de generación de estas imágenes implica una serie de expansiones en cada píxel de la imagen binaria, empleando un enfoque aleatorio dentro de un conjunto finito de posibilidades. Este método asegura que cada imagen compartida contenga información única, lo que, al combinarse con otras, permite la reconstrucción de una versión con distorsiones de la imagen original.
         </p>
         <p>
             El siguiente paso es guardar estas imágenes compartidas en el sistema de archivos, asegurando su persistencia para su posterior recuperación. Una vez que las imágenes compartidas están almacenadas, se realiza una operación de superposición. Esta operación combina las imágenes compartidas para recuperar la imagen original. Para lograr esto, se utiliza una técnica de "AND" a nivel de bits, que preserva los píxeles comunes entre las imágenes compartidas, descartando aquellos que no se repiten.
         </p>
         <p>
-            Finalmente, el sistema devuelve las imágenes compartidas resultantes, así como la imagen original recuperada. Esto proporciona una capa adicional de seguridad, ya que la información original se protege detrás de las imágenes compartidas generadas durante el proceso de encriptación. Este enfoque ofrece una alternativa interesante a los métodos convencionales de encriptación, ya que aprovecha la naturaleza visual de las imágenes para salvaguardar la información sensible.
+            Finalmente, el sistema devuelve las imágenes compartidas resultantes, así como la imagen original recuperada. Este enfoque ofrece una alternativa interesante a los métodos convencionales de encriptación, ya que aprovecha la naturaleza visual de las imágenes para salvaguardar la información sensible.
         </p>
         <h2>Marcas de agua</h2>
         <p>
             En la parte de marcas de agua....
+        </p>
+        <h2>Para más información</h2>
+        <p>
+            Acuda al siguiente reporte de investigación: https://es.overleaf.com/read/mjsscfbhfghb#716d32
         </p>
     </div>
 {% endblock %}
