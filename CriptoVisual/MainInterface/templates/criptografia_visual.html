@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Criptografía Visual</h1>
+    <p class="lead">Utiliza esta herramienta para cifrar y descifrar imágenes utilizando técnicas de criptografía visual.</p>
+    <hr class="my-4">
+    
+    <h2>Cargar imagen para criptografía visual</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ steps_form.as_p }}
+        <button type="submit" class="btn btn-primary btn-lg">Cargar</button>
+    </form>
+</div>
+{% endblock %}

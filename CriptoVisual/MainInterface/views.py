@@ -154,3 +154,34 @@ def index(request):
 
 def descripcion_app(request):
     return render(request, 'info.html')
+
+def criptografia_visual(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        steps_form = StepsForm(request.POST)
+        if form.is_valid() and steps_form.is_valid():
+            image = form.cleaned_data['image']
+            num_steps = steps_form.cleaned_data['num_steps']
+            image_path = default_storage.save('uploads/' + image.name, ContentFile(image.read()))
+            image_full_path = os.path.join(settings.MEDIA_ROOT, image_path)
+            sharesPath, overlay_path, original_image_path = main(image_full_path, num_steps)
+            if not sharesPath:
+                return render(request, 'criptografia_visual.html', {
+                    'form': form,
+                    'steps_form': steps_form,
+                    'error': 'Error processing the image.'
+                })
+            return render(request, 'result.html', {
+                'form': form,
+                'steps_form': steps_form,
+                'share_paths': [os.path.join(settings.MEDIA_URL, os.path.relpath(path, settings.MEDIA_ROOT)) for path in sharesPath],
+                'overlay_path': os.path.join(settings.MEDIA_URL, os.path.relpath(overlay_path, settings.MEDIA_ROOT)),
+                'original_image_path': os.path.join(settings.MEDIA_URL, image_path),
+            })
+    else:
+        form = ImageUploadForm()
+        steps_form = StepsForm()
+    return render(request, 'criptografia_visual.html', {'form': form, 'steps_form': steps_form})
+
+def marcas_de_agua(request):
+    return render(request, 'marcas_de_agua.html')
