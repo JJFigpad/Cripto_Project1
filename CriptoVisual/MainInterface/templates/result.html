@@ -1,20 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Result</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_styles %}
+    <style>
+        /* Estilos personalizados para los resultados */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image-container {
+            text-align: center;
+            width: 400px;
+            margin: 10px;
+            border: 2px solid blue; /* Borde azul */
+            padding: 5px; /* Espacio interior */
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
     <h1>Result</h1>
-    <p>Original Image:</p>
-    <img src="{{ original_image_path }}" alt="Original Image">
-    {% for share_path in share_paths %}
-        <p>Share {{ forloop.counter }}:</p>
-        <img src="{{ share_path }}" alt="Share {{ forloop.counter }}">
-    {% endfor %}
-    <p>Overlay:</p>
-    <img src="{{ overlay_path }}" alt="Overlay">
+    <div class="container">
+        <div class="image-container">
+            <p>Original Image:</p>
+            <img src="{{ original_image_path }}" alt="Original Image">
+        </div>
+        <div class="image-container">
+            <p>Overlay:</p>
+            <img src="{{ overlay_path }}" alt="Overlay">
+        </div>
+        {% for share_path in share_paths %}
+        <div class="image-container">
+            <p>Share {{ forloop.counter }}:</p>
+            <img src="{{ share_path }}" alt="Share {{ forloop.counter }}">
+        </div>
+        {% endfor %}
+    </div>
     <br>
     <a href="/">Volver a cargar otra imagen</a>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_styles %}
+    <style>
+        /* Estilos personalizados para la descripción de la aplicación */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Descripción de la Aplicación</h1>
+    <div class="container">
+        <p>
+            Este código presenta una implementación de criptografía visual, una técnica que se aparta de los métodos convencionales de encriptación basados en algoritmos matemáticos, en su lugar utiliza imágenes para proteger la información. Comienza convirtiendo una imagen dada en una representación binaria, donde los píxeles se clasifican como blancos o negros según un umbral predefinido. Esta etapa de binarización simplifica el procesamiento de la imagen y sirve como punto de partida para el proceso de encriptación.
+        </p>
+        <p>
+            Una vez que se ha obtenido la imagen binaria, se procede a generar las imágenes compartidas. Estas imágenes, también conocidas como "sombras" o "shares", son esenciales para la recuperación de la imagen original. El proceso de generación de las imágenes compartidas implica una serie de transformaciones en los píxeles de la imagen binaria, utilizando un enfoque basado en la aleatoriedad. Esto asegura que cada imagen compartida contenga información única que, cuando se combina con otras, permita la reconstrucción de la imagen original.
+        </p>
+        <p>
+            El siguiente paso es guardar estas imágenes compartidas en el sistema de archivos, asegurando su persistencia para su posterior recuperación. Una vez que las imágenes compartidas están almacenadas, se realiza una operación de superposición. Esta operación combina las imágenes compartidas para recuperar la imagen original. Para lograr esto, se utiliza una técnica de "AND" a nivel de bits, que preserva los píxeles comunes entre las imágenes compartidas, descartando aquellos que no se repiten.
+        </p>
+        <p>
+            Finalmente, el sistema devuelve las imágenes compartidas resultantes, así como la imagen original recuperada. Esto proporciona una capa adicional de seguridad, ya que la información original se protege detrás de las imágenes compartidas generadas durante el proceso de encriptación. Este enfoque ofrece una alternativa interesante a los métodos convencionales de encriptación, ya que aprovecha la naturaleza visual de las imágenes para salvaguardar la información sensible.
+        </p>
+    </div>
+{% endblock %}

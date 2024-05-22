@@ -143,11 +143,14 @@ def index(request):
                     'error': 'Error processing the image.'
                 })
             return render(request, 'result.html', {
-                'share_paths': [path.replace(settings.MEDIA_ROOT, settings.MEDIA_URL) for path in sharesPath],
-                'overlay_path': overlay_path.replace(settings.MEDIA_ROOT, settings.MEDIA_URL),
+                'share_paths': [os.path.join(settings.MEDIA_URL, os.path.relpath(path, settings.MEDIA_ROOT)) for path in sharesPath],
+                'overlay_path': os.path.join(settings.MEDIA_URL, os.path.relpath(overlay_path, settings.MEDIA_ROOT)),
                 'original_image_path': os.path.join(settings.MEDIA_URL, image_path),
             })
     else:
         form = ImageUploadForm()
         steps_form = StepsForm()
     return render(request, 'index.html', {'form': form, 'steps_form': steps_form})
+
+def descripcion_app(request):
+    return render(request, 'info.html')

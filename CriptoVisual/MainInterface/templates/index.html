@@ -1,15 +1,28 @@
+{% extends 'base.html' %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cargar imagen</title>
 </head>
 <body>
+    {% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Bienvenido a CriptoVisual</h1>
+    <p class="lead">Una herramienta para la criptografía visual.</p>
+    <hr class="my-4">
     <h1>Cargar imagen para criptografía visual</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         {{ steps_form.as_p }}
-        <button type="submit">Cargar</button>
+        <button type="submit" class="btn btn-primary btn-lg">Cargar</button>
     </form>
+</div>
+
+    
+    
+    {% endblock %}
+
 </body>
 </html>
