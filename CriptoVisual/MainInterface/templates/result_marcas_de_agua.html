@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_styles %}
+    <style>
+        /* Estilos personalizados para los resultados */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image-container {
+            text-align: center;
+            width: 400px;
+            margin: 10px;
+            border: 2px solid blue; /* Borde azul */
+            padding: 5px; /* Espacio interior */
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Image Watermarking Result</h1>
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+    {% if image_full_path %}
+        <div class="container">
+            <div class="image-container">
+                <p>Original Image:</p>
+                <img src="{{ image_full_path }}" alt="Original Image">
+            </div>
+            {% if imagen_marcada_path %}
+            <div class="image-container">
+                <p>Watermarked Image:</p>
+                <img src="{{ imagen_marcada_path }}" alt="Watermarked Image">
+            </div>
+            <div class="image-container">
+                <p>Watermark:</p>
+                <img src="{{ watermark_full_path }}" alt="Watermark">
+            </div>
+            {% endif %}
+            {% if marked_image_full_path %}
+            <div class="image-container">
+                <p>Watermarked Image:</p>
+                <img src="{{ marked_image_full_path }}" alt="Watermarked Image">
+            </div>
+            {% endif %}
+            {% if marcarecuperada_path %}
+            <div class="image-container">
+                <p>Recovered Watermark:</p>
+                <img src="{{ marcarecuperada_path }}" alt="Recovered Watermark">
+            </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    <br>
+    <a href="{% url 'pagina_marcas_de_agua' %}">Upload Another Image</a>
+{% endblock %}
