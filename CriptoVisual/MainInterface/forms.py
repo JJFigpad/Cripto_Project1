@@ -10,9 +10,9 @@ class StepsForm(forms.Form):
 class ImageUploadForm_(forms.Form):
     image = forms.ImageField(label='Imagen Principal')
     watermark = forms.ImageField(label='Imagen de Marca de Agua',required=False)
-    marked_image = forms.ImageField(label='Select the watermarked image', required=False)
+    marked_image = forms.ImageField(label='Seleccione imagen con marca de agua', required=False)
     action = forms.ChoiceField(
-        choices=[('mark', 'Mark Image'), ('recover', 'Recover Watermark')],
+        choices=[('mark', 'Crear marca de agua'), ('recover', 'Recuperar marca de agua')],
         widget=forms.RadioSelect,
-        label='Action'
+        label='Selecciona una opción:'
     )

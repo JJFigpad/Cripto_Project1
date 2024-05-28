@@ -338,17 +338,16 @@ def marcas_de_agua(request):
                     error_message = "Watermark image is required for marking the image."
                 else:
                     watermark_path = default_storage.save('uploads/' + watermark.name, ContentFile(watermark.read()))
-                    watermark_full_path = default_storage.path(watermark_path)
+                    watermark_full_path = os.path.join(settings.MEDIA_ROOT, watermark_path)
                     try:
                         imagen_marcada_path = insert_watermark(image_full_path, watermark_full_path)
-                        imagen_marcada_rel_path = default_storage.url(imagen_marcada_path)
-                        image_full_path = default_storage.url(image_full_path)
-                        watermark_full_path = default_storage.url(watermark_full_path)
+                        imagen_marcada_rel_path = os.path.join(settings.MEDIA_ROOT, imagen_marcada_path)
+                        image_full_path = os.path.join(settings.MEDIA_ROOT, image_full_path)
                         return render(request, 'result_marcas_de_agua.html', {
                             'form': form,
-                            'watermark_full_path': os.path.join(settings.MEDIA_URL, watermark_full_path),
-                            'image_full_path': os.path.join(settings.MEDIA_URL, image_full_path),
-                            'imagen_marcada_path': os.path.join(settings.MEDIA_URL, imagen_marcada_rel_path),
+                            'watermark_full_path': os.path.join(settings.MEDIA_URL, os.path.relpath(imagen_marcada_rel_path, settings.MEDIA_ROOT)),
+                            'image_full_path': os.path.join(settings.MEDIA_URL, os.path.relpath(watermark_full_path, settings.MEDIA_ROOT)),
+                            'imagen_marcada_path': os.path.join(settings.MEDIA_URL, os.path.relpath(image_full_path, settings.MEDIA_ROOT)),
                         })
                     except FileNotFoundError as e:
                         error_message = str(e)
@@ -359,17 +358,17 @@ def marcas_de_agua(request):
                     error_message = "Watermarked image is required for recovering the watermark."
                 else:
                     marked_image_path = default_storage.save('uploads/' + marked_image.name, ContentFile(marked_image.read()))
-                    marked_image_full_path = default_storage.path(marked_image_path)
+                    marked_image_full_path = os.path.join(settings.MEDIA_ROOT, marked_image_path)
                     try:
                         marcarecuperada_path = recover_watermark(image_full_path, marked_image_full_path)
-                        marcarecuperada_rel_path = default_storage.url(marcarecuperada_path)
-                        image_full_path = default_storage.url(image_full_path)
-                        marked_image_full_path = default_storage.url(marked_image_full_path)
+                        marcarecuperada_rel_path = os.path.join(settings.MEDIA_ROOT, marcarecuperada_path)
+                        image_full_path = os.path.join(settings.MEDIA_ROOT, image_full_path)
+                        #marked_image_full_path = default_storage.url(marked_image_full_path)
                         return render(request, 'result_marcas_de_agua.html', {
                             'form': form,
-                            'image_full_path': os.path.join(settings.MEDIA_URL, image_full_path),
-                            'marked_image_full_path': os.path.join(settings.MEDIA_URL, marked_image_full_path),
-                            'marcarecuperada_path': os.path.join(settings.MEDIA_URL, marcarecuperada_rel_path),
+                            'image_full_path': os.path.join(settings.MEDIA_URL, os.path.relpath(image_full_path, settings.MEDIA_ROOT)),
+                            'marked_image_full_path': os.path.join(settings.MEDIA_URL, os.path.relpath(marked_image_full_path, settings.MEDIA_ROOT)),
+                            'marcarecuperada_path': os.path.join(settings.MEDIA_URL, os.path.relpath(marcarecuperada_rel_path, settings.MEDIA_ROOT)),
                         })
                     except FileNotFoundError as e:
                         error_message = str(e)
