@@ -380,3 +380,6 @@ def marcas_de_agua(request):
         form = ImageUploadForm_()
 
     return render(request, 'marcas_de_agua.html', {'form': form, 'error': error_message})
+
+def contact(request):
+    return render(request, 'contact.html')
