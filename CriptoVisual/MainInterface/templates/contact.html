@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_styles %}
+    <style>
+        /* Estilos personalizados para la página de contacto */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-item {
+            margin-bottom: 20px;
+        }
+        .contact-item h3 {
+            margin: 0;
+        }
+        .contact-item p {
+            margin: 5px 0 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Contacto</h1>
+    <div class="container">
+        <ul class="contact-list">
+            <li class="contact-item">
+                <h3>Tania Vanesa Vasquez Guevara</h3>
+                <p>Email: <a href="mailto:tvvasquezg@unal.edu.co">tvvasquezg@unal.edu.co</a></p>
+            </li>
+            <li class="contact-item">
+                <h3>Alejandro Higuera Castro</h3>
+                <p>Email: <a href="mailto:ahiguerac@unal.edu.co">ahiguerac@unal.edu.co</a></p>
+            </li>
+            <li class="contact-item">
+                <h3>Juan Jose Figueroa Padilla</h3>
+                <p>Email: <a href="mailto:jufigueroap@unal.edu.co">jufigueroap@unal.edu.co</a></p>
+            </li>
+        </ul>
+        <p>Estudiantes de Ciencias de la Computación de la Universidad Nacional de Colombia.</p>
+    </div>
+{% endblock %}
