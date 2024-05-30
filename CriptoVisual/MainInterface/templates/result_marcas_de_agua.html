@@ -35,16 +35,16 @@
     {% if image_full_path %}
         <div class="container">
             <div class="image-container">
-                <p>Imagen Original:</p>
+                <p>Marca de agua:</p>
                 <img src="{{ image_full_path }}" alt="Original Image">
             </div>
             {% if imagen_marcada_path %}
             <div class="image-container">
-                <p>Imagen con marca de agua:</p>
+                <p>Imagen Original:</p>
                 <img src="{{ imagen_marcada_path }}" alt="Watermarked Image">
             </div>
             <div class="image-container">
-                <p>Marca de agua:</p>
+                <p>Imagen Marcada:</p>
                 <img src="{{ watermark_full_path }}" alt="Watermark">
             </div>
             {% endif %}
